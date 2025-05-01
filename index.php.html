@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Digital Business Card</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --bg: #f4f4f4;
+            --card-bg: #fff;
+            --text: #333;
+            --muted: #777;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 420px;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0.2rem 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: var(--muted);
+            margin: 0.2rem 0 1rem;
+        }
+
+        p {
+            margin: 0.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .lang-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <button class="lang-toggle" onclick="switchLanguage()">Español / English</button>
+
+    <img class="avatar" src="your-photo.jpg" alt="Your photo" />
+
+    <h1 data-en="Your Name" data-es="Tu Nombre">Your Name</h1>
+    <h3 data-en="Web Developer / Role" data-es="Desarrollador Web / Rol">Web Developer / Role</h3>
+
+    <p>
+        <span class="label-email" data-en="Email: " data-es="Correo: ">Email: </span>
+        <a href="mailto:you@example.com">you@example.com</a>
+    </p>
+    <p>
+        <span class="label-phone" data-en="Phone: " data-es="Teléfono: ">Phone: </span>
+        <a href="tel:+1234567890">+1234567890</a>
+    </p>
+    <p>
+        <a href="https://yourportfolio.com" target="_blank">yourportfolio.com</a>
+    </p>
+</div>
+
+<script>
+    let currentLang = 'en';
+
+    function switchLanguage() {
+        currentLang = currentLang === 'en' ? 'es' : 'en';
+
+        document.querySelectorAll('[data-en]').forEach(el => {
+            if (el.classList.contains('label-email') || el.classList.contains('label-phone') || el.tagName === 'H1' || el.tagName === 'H3') {
+                el.textContent = el.getAttribute('data-' + currentLang);
+            }
+        });
+    }
+</script>
+</body>
+</html>
