@@ -217,7 +217,7 @@
     function switchLanguage() {
         currentLang = currentLang === 'en' ? 'es' : 'en';
 
-        document.querySelector('.lang-toggle').textContent = currentLang === 'es' ? '🇬🇧' : '????';
+        document.querySelector('.lang-toggle').textContent = currentLang === 'es' ? '🇬🇧' : '🇦🇷';
 
         document.querySelectorAll('[data-en]').forEach(el => {
             el.textContent = el.getAttribute('data-' + currentLang);
