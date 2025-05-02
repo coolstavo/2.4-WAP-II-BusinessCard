@@ -1,67 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Digital Business Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JACB - Digital Business Card</title>
     <style>
+
+        .card {
+            position: relative;
+            width: 100vw;
+            height: 91vh;
+            border-radius: 20px;
+            overflow: hidden;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background: var(--card-bg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--border-color);
+        }
+
+        .card-border {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
         :root {
-            --primary: #0066cc;
-            --bg: #f4f4f4;
+            --primary: #007906;
+            --bg: #eaf4ea;
             --card-bg: #fff;
             --text: #333;
-            --muted: #777;
+            --muted: #555;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --card-bg-image: url('Assets/svg/textAsset 1.svg');
+        }
+
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            src: url('Assets/fonts/Bricolage Grotesque.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Climate Crisis';
+            src: url('Assets/fonts/Climate Crisis.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
             background: var(--bg);
             color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 0.2rem;
+            box-sizing: border-box;
         }
 
         .card {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 420px;
+            position: relative;
+            width: 99vw;
+            height: 85vh;
             border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 3.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--border-color);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-family: 'Bricolage Grotesque', sans-serif;
         }
 
-        .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
+        .card-border {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .card img {
+            width: 200px;
+            height: auto;
+            object-fit: contain;
         }
 
         h1 {
-            font-size: 1.5rem;
-            margin: 0.2rem 0;
-        }
-
-        h3 {
-            font-size: 1rem;
+            font-size: 1.2rem;
+            margin: 0;
             color: var(--muted);
-            margin: 0.2rem 0 1rem;
+            font-family: 'Climate Crisis', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            text-align: center;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
-        p {
-            margin: 0.6rem 0;
-            font-size: 0.95rem;
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            text-align: left;
+        }
+
+        .info p {
+            margin: 0;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .info span {
+            text-transform: uppercase;
         }
 
         a {
             color: var(--primary);
             text-decoration: none;
-            word-break: break-all;
+            word-break: break-word;
+            font-size: 1rem;
+            text-align: right;
         }
 
         .lang-toggle {
@@ -69,10 +151,15 @@
             color: white;
             border: none;
             border-radius: 10px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
+            padding: 0.4rem 0.8rem;
+            font-size: 1.5rem;
+            margin-top: 1rem;
             cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: #005c04;
         }
 
         @media (max-width: 400px) {
@@ -80,40 +167,60 @@
                 padding: 1rem;
             }
         }
+
+
     </style>
 </head>
 <body>
 <div class="card">
-    <button class="lang-toggle" onclick="switchLanguage()">Español / English</button>
 
-    <img class="avatar" src="your-photo.jpg" alt="Your photo" />
+    <svg class="card-border" viewBox="0 0 1000 1400" preserveAspectRatio="none">
+        <defs>
+            <path id="borderPath" d="M 20,40 Q 20,20 40,20 H 960 Q 980,20 980,40 V 1360 Q 980,1380 960,1380 H 40 Q 20,1380 20,1360 Z" />
+        </defs>
+        <text font-size="17" font-family="Bricolage Grotesque, sans-serif" fill="#111">
+            <textPath href="#borderPath" startOffset="0%">
+                JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS ·
+            </textPath>
+        </text>
+    </svg>
 
-    <h1 data-en="Your Name" data-es="Tu Nombre">Your Name</h1>
-    <h3 data-en="Web Developer / Role" data-es="Desarrollador Web / Rol">Web Developer / Role</h3>
+    <img src="/Assets/png/logo-no-background.png" alt="JACB Logo" />
 
-    <p>
-        <span class="label-email" data-en="Email: " data-es="Correo: ">Email: </span>
-        <a href="mailto:you@example.com">you@example.com</a>
-    </p>
-    <p>
-        <span class="label-phone" data-en="Phone: " data-es="Teléfono: ">Phone: </span>
-        <a href="tel:+1234567890">+1234567890</a>
-    </p>
-    <p>
-        <a href="https://yourportfolio.com" target="_blank">yourportfolio.com</a>
-    </p>
+    <h1>Just Another <br> Coding Business</h1>
+
+    <div class="content">
+        <div class="info">
+            <p>
+                <span class="label-email" data-en="Email: " data-es="Correo: ">Correo: </span>
+                <a href="mailto:jacb.business@gmail.com">jacb.business@gmail.com</a>
+            </p>
+            <p>
+                <span class="label-phone" data-en="Phone: " data-es="Teléfono: ">Teléfono: </span>
+                <a href="tel:(+31) 6 12-74-75-93">(+31) 6 12-74-75-93</a>
+            </p>
+            <p>
+                <span class="label-address" data-en="Address: " data-es="Dirección: ">Dirección: </span>
+                <a href="https://maps.google.com/?q=Jeroenstraat+17,+9783+IL,+Groningen" target="_blank">
+                    Jeroenstraat 17, 9783 IL, Groningen
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <button class="lang-toggle" onclick="switchLanguage()">🇬🇧</button>
 </div>
 
 <script>
-    let currentLang = 'en';
+    let currentLang = 'es';
 
     function switchLanguage() {
         currentLang = currentLang === 'en' ? 'es' : 'en';
 
+        document.querySelector('.lang-toggle').textContent = currentLang === 'es' ? '🇬🇧' : '🇪🇸';
+
         document.querySelectorAll('[data-en]').forEach(el => {
-            if (el.classList.contains('label-email') || el.classList.contains('label-phone') || el.tagName === 'H1' || el.tagName === 'H3') {
-                el.textContent = el.getAttribute('data-' + currentLang);
-            }
+            el.textContent = el.getAttribute('data-' + currentLang);
         });
     }
 </script>
