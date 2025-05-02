@@ -7,12 +7,11 @@
     <style>
         :root {
             --primary: #007906;
-            --bg: #eaf4ea;
+            --bg: #0e420e;
             --card-bg: #fff;
             --text: #333;
             --muted: #555;
             --border-color: rgba(0, 0, 0, 0.1);
-            --card-bg-image: url('assets/svg/textAsset 1.svg');
         }
 
         @font-face {
@@ -114,6 +113,7 @@
             padding: 0.5rem;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            gap: 0.5rem; /* Added spacing between label and data */
         }
 
         .info span {
@@ -164,7 +164,7 @@
         <div class="info">
             <p>
                 <span class="label-email" data-en="Email: " data-es="Correo: ">Correo: </span>
-                <a href="mailto:jacb.business@gmail.com">jacb.business@gmail.com</a>
+                <a href="mailto:jacb.business@gmail.com"> jacb.business@gmail.com</a>
             </p>
             <p>
                 <span class="label-phone" data-en="Phone: " data-es="Teléfono: ">Teléfono: </span>
@@ -186,7 +186,7 @@
             <path id="borderPath"
                   d="M 20,40 Q 20,20 40,20 H 960 Q 980,20 980,40 V 1360 Q 980,1380 960,1380 H 40 Q 20,1380 20,1360 Z"/>
         </defs>
-        <text font-size="17" font-family="Bricolage Grotesque, sans-serif" fill="#111">
+        <text font-size="17" font-family="Bricolage Grotesque, sans-serif" fill="#007906">
             <textPath href="#borderPath" startOffset="0%">
                 JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST
                 ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER CODING BUSINESS · JUST ANOTHER
@@ -217,7 +217,7 @@
     function switchLanguage() {
         currentLang = currentLang === 'en' ? 'es' : 'en';
 
-        document.querySelector('.lang-toggle').textContent = currentLang === 'es' ? '🇬🇧' : '🇦🇷';
+        document.querySelector('.lang-toggle').textContent = currentLang === 'es' ? '🇬🇧' : '????';
 
         document.querySelectorAll('[data-en]').forEach(el => {
             el.textContent = el.getAttribute('data-' + currentLang);
