@@ -4,7 +4,7 @@ Welcome to the **Digital Business Card** for **JACB (Just Another Coding Busines
 
 ## 🚀 Live Demo
 Check out the live version here:
-👉 **[Digital Business Card Live](https://gustavocostaaraujo.github.io/2.4-WAP-II-BusinessCard/)**
+👉 **[Digital Business Card Live]([https://gustavocostaaraujo.github.io/2.4-WAP-II-BusinessCard/](https://coolstavo.github.io/2.4-WAP-II-BusinessCard/))**
 
 ## ✨ Features
 - **Responsive Design:** Optimized for mobile, tablet, and desktop viewing.
